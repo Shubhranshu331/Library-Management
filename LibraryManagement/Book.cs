@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement
 {
-    internal class Book
+    public class Book
     {
         private static int _nextId = 1;
 
@@ -22,7 +22,7 @@ namespace LibraryManagement
             if (string.IsNullOrWhiteSpace(title))
                 throw new ArgumentException("Title is required");
             if (string.IsNullOrWhiteSpace(author))
-                throw new ArguementException("Author name needed");
+                throw new ArgumentException("Author name needed");
 
             Id = _nextId++;
             Title = title.Trim();
@@ -34,7 +34,7 @@ namespace LibraryManagement
             return DueDate.HasValue && today.Date > DueDate.Value.Date;  // self.duedate is not None and today.date() > self.duedate.date()
         }
 
-        internal void CheckOut(Member member, DateTime dueDAte)
+        internal void CheckOut(Member member, DateTime dueDate)
         {
             BorrowedBy = member;
             DueDate = dueDate;

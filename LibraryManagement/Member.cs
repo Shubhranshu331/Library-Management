@@ -14,7 +14,7 @@ namespace LibraryManagement
         public const int MaxBooks = 3; // max books can be borrowed by one individual 
 
         public int Id { get; }
-        public string Name { get; };
+        public string Name { get; }
         public IReadOnlyList<Book> Borrowed => _borrowed; // showing borrowed books safely 
 
         public bool CanBorrow => _borrowed.Count < MaxBooks; // checking the borrowing limit 
@@ -22,7 +22,7 @@ namespace LibraryManagement
         public Member(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArguementException("Member name is required."); // checking hwether the name is valid.
+                throw new ArgumentException("Member name is required."); // checking hwether the name is valid.
 
             Id = _nextId++;
             Name = name.Trim();
